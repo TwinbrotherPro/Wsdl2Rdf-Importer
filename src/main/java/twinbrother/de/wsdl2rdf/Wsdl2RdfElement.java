@@ -2,8 +2,10 @@ package twinbrother.de.wsdl2rdf;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -28,12 +30,14 @@ import org.openrdf.sail.memory.MemoryStore;
 public class Wsdl2RdfElement {
 
 	private ClassLoader classLoader;;
-	private final File xsltFileLocation;
+	private final InputStream xsltFileLocation;
 	private final File outputTarget;
+	private URL url;
 
 	public Wsdl2RdfElement(File wsdlFile) throws TransformerException {
 		classLoader = getClass().getClassLoader();
-		xsltFileLocation = new File(classLoader.getResource("wsdl20-rdf.xslt").getFile());
+		xsltFileLocation = classLoader.getResourceAsStream("wsdl20-rdf.xslt");
+		url = classLoader.getResource("wsdl20-rdf.xslt");
 		outputTarget = new File(
 				Wsdl2Rdf.getWorkingDirectory().getAbsolutePath() + "/" + wsdlFile.getName().split("\\.")[0] + ".rdf");
 		process(wsdlFile);
@@ -46,8 +50,12 @@ public class Wsdl2RdfElement {
 	 */
 	private void process(File wsdlFile) throws TransformerException {
 
+		Source source = new StreamSource(xsltFileLocation);
+		source.setSystemId(url.toExternalForm());
+
 		TransformerFactory tFactory = TransformerFactory.newInstance();
 		Transformer transformer = tFactory.newTransformer(new StreamSource(xsltFileLocation));
+		System.out.println("XSLT-Location:" + url);
 		transformer.transform(new StreamSource(wsdlFile), new StreamResult(outputTarget));
 	}
 
@@ -58,13 +66,14 @@ public class Wsdl2RdfElement {
 	 * @throws RepositoryException
 	 * @throws IOException
 	 * @throws RDFParseException
-	 * @throws QueryEvaluationException 
-	 * @throws MalformedQueryException 
+	 * @throws QueryEvaluationException
+	 * @throws MalformedQueryException
 	 */
-	public String getTargetNamespace() throws RepositoryException, RDFParseException, IOException, QueryEvaluationException, MalformedQueryException {
+	public String getTargetNamespace() throws RepositoryException, RDFParseException, IOException,
+			QueryEvaluationException, MalformedQueryException {
 
 		String targetNamespace = "";
-		
+
 		Repository repo = new SailRepository(new MemoryStore());
 		repo.initialize();
 
@@ -82,9 +91,9 @@ public class Wsdl2RdfElement {
 				while (result.hasNext()) { // iterate over the result
 					BindingSet bindingSet = result.next();
 					String valueOfS = bindingSet.getValue("s").stringValue();
-					
+
 					targetNamespace = valueOfS.split("#")[0];
-					
+
 					break;
 				}
 			} finally {

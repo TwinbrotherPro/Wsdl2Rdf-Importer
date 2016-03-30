@@ -33,9 +33,9 @@ public class Wsdl2RdfElementTest {
 
 		assertTrue(testFile.getAbsolutePath().equals(outputfile.getAbsolutePath()));
 
-		if (testFile != null) {
-			testFile.delete();
-		}
+//		if (testFile != null) {
+//			testFile.delete();
+//		}
 	}
 
 	@Test
@@ -61,9 +61,9 @@ public class Wsdl2RdfElementTest {
 		}
 		assertTrue(tns.equals("http://www.herongyang.com/Service/v1/"));
 		
-		if (testFile != null) {
-			testFile.delete();
-		}
+//		if (testFile != null) {
+//			testFile.delete();
+//		}
 		
 	}
 
