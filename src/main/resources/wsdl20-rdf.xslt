@@ -536,6 +536,9 @@
 
 		<rwsdl:Binding
 			rdf:about="{concat($wsdl-namespace, 'wsdl.binding(', @name, ')')}">
+			<rdfs:label rdf:parseType="Literal">
+				<xsl:value-of select="@name" />
+			</rdfs:label>
 			<rdf:type rdf:resource="{@type}" />
 			<xsl:if test="@interface">
 				<xsl:variable name="interface-ns">
@@ -874,6 +877,9 @@
 
 		<rwsdl:Service
 			rdf:about="{concat($wsdl-namespace, 'wsdl.service(', @name, ')')}">
+			<rdfs:label rdf:parseType="Literal">
+				<xsl:value-of select="@name" />
+			</rdfs:label>
 			<xsl:variable name="interface-ns">
 				<xsl:call-template name="qname-ns">
 					<xsl:with-param name="qname" select="@interface" />
@@ -908,6 +914,9 @@
 
 		<rwsdl:Endpoint
 			rdf:about="{concat($wsdl-namespace, 'wsdl.endpoint(', parent::*/@name, '/', @name, ')')}">
+			<rdfs:label rdf:parseType="Literal">
+				<xsl:value-of select="@name" />
+			</rdfs:label>
 			<xsl:variable name="binding-ns">
 				<xsl:call-template name="qname-ns">
 					<xsl:with-param name="qname" select="@binding" />
