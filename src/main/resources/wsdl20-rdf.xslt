@@ -202,12 +202,10 @@
 					<xsl:value-of select="@messageLabel" />
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'input' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-only'  or @pattern='http://www.w3.org/2006/01/wsdl/robust-in-only' or @pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'      or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/in-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-in']">
-					In
+					test="local-name() =  'input' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-only'  or @pattern='http://www.w3.org/2006/01/wsdl/robust-in-only' or @pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'      or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/in-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-in']">In
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'output' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/out-only' or @pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'     or @pattern='http://www.w3.org/2006/01/wsdl/robust-out-only' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/in-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-in']">
-					Out
+					test="local-name() = 'output' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/out-only' or @pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'     or @pattern='http://www.w3.org/2006/01/wsdl/robust-out-only' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/in-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-in']">Out
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -225,12 +223,8 @@
 		</xsl:variable>
 		<xsl:variable name="msg-direction">
 			<xsl:choose>
-				<xsl:when test="local-name() =  'input'">
-					InputMessage
-				</xsl:when>
-				<xsl:when test="local-name() = 'output'">
-					OutputMessage
-				</xsl:when>
+				<xsl:when test="local-name() =  'input'">InputMessage</xsl:when>
+				<xsl:when test="local-name() = 'output'">OutputMessage</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
 
@@ -307,20 +301,16 @@
 					<xsl:value-of select="@messageLabel" />
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'infault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/out-in']">
-					In
+					test="local-name() =  'infault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/out-in']">In
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'infault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/robust-out-only']">
-					Out
+					test="local-name() =  'infault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/robust-out-only']">Out
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'outfault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-out']">
-					Out
+					test="local-name() = 'outfault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-out']">Out
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'outfault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/robust-in-only']">
-					In
+					test="local-name() = 'outfault' and parent::wsdl:operation[@pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or @pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or @pattern='http://www.w3.org/2006/01/wsdl/robust-in-only']">In
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -346,12 +336,8 @@
 		</xsl:variable>
 		<xsl:variable name="msg-direction">
 			<xsl:choose>
-				<xsl:when test="local-name() =  'infault'">
-					InputMessage
-				</xsl:when>
-				<xsl:when test="local-name() = 'outfault'">
-					OutputMessage
-				</xsl:when>
+				<xsl:when test="local-name() =  'infault'">InputMessage</xsl:when>
+				<xsl:when test="local-name() = 'outfault'">OutputMessage</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
 
@@ -420,8 +406,7 @@
 
 		<xsl:choose>
 			<xsl:when test="$interface/wsdl:operation[@name=$operation-name]">
-				<xsl:value-of select="$interface/@name" />
-				:
+				<xsl:value-of select="$interface/@name" />:
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:for-each select="str:split($interface/@extends)">
@@ -489,8 +474,7 @@
 
 		<xsl:choose>
 			<xsl:when test="$interface/wsdl:fault[@name=$fault-name]">
-				<xsl:value-of select="$interface/@name" />
-				:
+				<xsl:value-of select="$interface/@name" />:
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:for-each select="str:split($interface/@extends)">
@@ -738,12 +722,10 @@
 					<xsl:value-of select="@messageLabel" />
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'input' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-only'  or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-in-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'      or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">
-					In
+					test="local-name() =  'input' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-only'  or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-in-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'      or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">In
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'output' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'     or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-out-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">
-					Out
+					test="local-name() = 'output' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out'     or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-out-only' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">Out
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -819,20 +801,16 @@
 					<xsl:value-of select="@messageLabel" />
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'infault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">
-					In
+					test="local-name() =  'infault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-in')">In
 				</xsl:when>
 				<xsl:when
-					test="local-name() =  'infault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-out-only')">
-					Out
+					test="local-name() =  'infault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-out-only')">Out
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'outfault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out')">
-					Out
+					test="local-name() = 'outfault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-out')">Out
 				</xsl:when>
 				<xsl:when
-					test="local-name() = 'outfault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-in-only')">
-					In
+					test="local-name() = 'outfault' and ($referenced-op-pattern='http://www.w3.org/2006/01/wsdl/in-opt-out' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/out-opt-in' or $referenced-op-pattern='http://www.w3.org/2006/01/wsdl/robust-in-only')">In
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
