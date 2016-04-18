@@ -66,5 +66,30 @@ public class Wsdl2RdfElementTest {
 //		}
 		
 	}
+	
+	@Test
+	public void testRestWsdl() {
+		ClassLoader classLoader = getClass().getClassLoader();
+		File wsdlLocation = new File(classLoader.getResource("test2.wsdl").getFile());
+		String tns = "";
+		File testFile = null;
+
+		Wsdl2RdfInterface wsdl2rdf = new Wsdl2Rdf(new File("/GovRepDataFolder/"));
+		try {
+			Wsdl2RdfElement element = wsdl2rdf.importsingleFile(wsdlLocation);
+			testFile = element.geRdfXmlFile();
+			tns = element.getTargetNamespace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue(tns.equals("http://www.bookstore.org/booklist/wsdl"));
+		
+//		if (testFile != null) {
+//			testFile.delete();
+//		}
+		
+	}
+
 
 }
