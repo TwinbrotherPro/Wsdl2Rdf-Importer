@@ -22,7 +22,7 @@ public class Wsdl2RdfElementTest {
 
 		Wsdl2RdfInterface wsdl2rdf = new Wsdl2Rdf(new File("/GovRepDataFolder/"));
 		try {
-			Wsdl2RdfElement element = wsdl2rdf.importsingleFile(wsdlLocation);
+			Wsdl2RdfElement element = wsdl2rdf.importSingleFile(wsdlLocation);
 			testFile = element.geRdfXmlFile();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -52,7 +52,7 @@ public class Wsdl2RdfElementTest {
 
 		Wsdl2RdfInterface wsdl2rdf = new Wsdl2Rdf(new File("/GovRepDataFolder/"));
 		try {
-			Wsdl2RdfElement element = wsdl2rdf.importsingleFile(wsdlLocation);
+			Wsdl2RdfElement element = wsdl2rdf.importSingleFile(wsdlLocation);
 			testFile = element.geRdfXmlFile();
 			tns = element.getTargetNamespace();
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class Wsdl2RdfElementTest {
 
 		Wsdl2RdfInterface wsdl2rdf = new Wsdl2Rdf(new File("/GovRepDataFolder/"));
 		try {
-			Wsdl2RdfElement element = wsdl2rdf.importsingleFile(wsdlLocation);
+			Wsdl2RdfElement element = wsdl2rdf.importSingleFile(wsdlLocation);
 			testFile = element.geRdfXmlFile();
 			tns = element.getTargetNamespace();
 		} catch (Exception e) {

@@ -12,7 +12,7 @@ public interface Wsdl2RdfInterface {
 	 * @return {@link Wsdl2RdfElement} for further working with the file
 	 * @throws Exception 
 	 */
-	public Wsdl2RdfElement importsingleFile(File location) throws Exception;
+	public Wsdl2RdfElement importSingleFile(File location) throws Exception;
 	
 	/**
 	 * Takes a given folder or archive and extracts the WSDL files

@@ -23,7 +23,7 @@ public class Wsdl2Rdf implements Wsdl2RdfInterface {
 		}
 	}
 
-	public Wsdl2RdfElement importsingleFile(File location) throws Exception {
+	public Wsdl2RdfElement importSingleFile(File location) throws Exception {
 		return new Wsdl2RdfElement(location);
 	}
 
