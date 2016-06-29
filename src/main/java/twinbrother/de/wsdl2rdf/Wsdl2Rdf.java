@@ -1,10 +1,9 @@
 package twinbrother.de.wsdl2rdf;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
-import javax.xml.transform.TransformerConfigurationException;
+import twinbrother.de.wsdl2rdf.exception.Wsdl2RdfException;
 
 public class Wsdl2Rdf implements Wsdl2RdfInterface {
 
@@ -23,7 +22,7 @@ public class Wsdl2Rdf implements Wsdl2RdfInterface {
 		}
 	}
 
-	public Wsdl2RdfElement importSingleFile(File location) throws Exception {
+	public Wsdl2RdfElement importSingleFile(File location) throws Wsdl2RdfException {
 		return new Wsdl2RdfElement(location);
 	}
 

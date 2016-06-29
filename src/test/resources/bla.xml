@@ -1,0 +1,47 @@
+<?xml version="1.0"?> 
+<wsdl:description xmlns:wsdl="http://www.w3.org/ns/wsdl"
+  xmlns:wsoap= "http://www.w3.org/ns/wsdl/soap"
+  xmlns:hy="http://www.herongyang.com/Service/v1/"
+  targetNamespace="http://www.herongyang.com/Service/v1/">
+
+  <wsdl:documentation>
+    Hello_WSDL_20_SOAP.wsdl
+    Copyright (c) 2009 by Dr. Herong Yang, herongyang.com
+    All rights reserved
+  </documentation>
+
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      targetNamespace="http://www.herongyang.com/Service/v1/">
+      <xsd:element name="Hello" type="xsd:string"/>    
+      <xsd:element name="HelloResponse" type="xsd:string"/>    
+    </xsd:schema>    
+  </wsdl:types>
+
+  <wsdl:interface name="helloInterface" >
+    <wsdl:operation name="Hello" 
+      pattern="http://www.w3.org/ns/wsdl/in-out" 
+      style="http://www.w3.org/ns/wsdl/style/iri">
+      <wsdl:input messageLabel="In" 
+        element="hy:Hello" />
+      <wsdl:output messageLabel="Out" 
+        element="hy:HelloResponse" />
+    </wsdl:operation>
+  </wsdl:interface>
+
+  <wsdl:binding name="helloBinding" 
+    interface="hy:helloInterface"
+    type="http://www.w3.org/ns/wsdl/soap"
+    wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP/">
+    <wsdl:operation ref="hy:Hello" 
+      wsoap:mep="http://www.w3.org/2003/05/soap/mep/soap-response"/>
+  </wsdl:binding>
+
+  <wsdl:service name="helloService" 
+    interface="hy:helloInterface">
+    <wsdl:endpoint name="helloEndpoint" 
+      binding="hy:helloBinding"
+address="http://www.herongyang.com/Service/Hello_SOAP_12.php"/>
+  </wsdl:service>
+
+</wsdl:description>

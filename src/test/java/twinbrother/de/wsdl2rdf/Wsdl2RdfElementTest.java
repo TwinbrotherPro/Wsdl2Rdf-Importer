@@ -6,6 +6,8 @@ import java.io.File;
 
 import org.junit.Test;
 
+import twinbrother.de.wsdl2rdf.exception.Wsdl2RdfException;
+
 public class Wsdl2RdfElementTest {
 
 	@Test
@@ -33,9 +35,9 @@ public class Wsdl2RdfElementTest {
 
 		assertTrue(testFile.getAbsolutePath().equals(outputfile.getAbsolutePath()));
 
-//		if (testFile != null) {
-//			testFile.delete();
-//		}
+		if (testFile != null) {
+			testFile.delete();
+		}
 	}
 
 	@Test
@@ -61,9 +63,9 @@ public class Wsdl2RdfElementTest {
 		}
 		assertTrue(tns.equals("http://www.herongyang.com/Service/v1/"));
 		
-//		if (testFile != null) {
-//			testFile.delete();
-//		}
+		if (testFile != null) {
+			testFile.delete();
+		}
 		
 	}
 	
@@ -85,10 +87,29 @@ public class Wsdl2RdfElementTest {
 		}
 		assertTrue(tns.equals("http://www.bookstore.org/booklist/wsdl"));
 		
-//		if (testFile != null) {
-//			testFile.delete();
-//		}
+		if (testFile != null) {
+			testFile.delete();
+		}
 		
+	}
+	
+	/**
+	 * Imports the sample Stockquote Service of the WSDL1.1 Specification and tries an import
+	 * @throws Wsdl2RdfException 
+	 */
+	@Test(expected = Wsdl2RdfException.class)
+	public void testMalFormatWsdl() throws Wsdl2RdfException {
+		ClassLoader classLoader = getClass().getClassLoader();
+		File wsdlLocation = new File(classLoader.getResource("bla.xml").getFile());
+		
+		Wsdl2RdfInterface wsdl2rdf = new Wsdl2Rdf(new File("/GovRepDataFolder/"));
+		try {
+			wsdl2rdf.importSingleFile(wsdlLocation);
+		} catch (Wsdl2RdfException e) {
+			//e.printStackTrace();
+			System.out.println(e.getAdditionalInformation());
+			throw e;
+		}
 	}
 
 
